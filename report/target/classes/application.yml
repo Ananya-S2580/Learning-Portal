@@ -1,0 +1,28 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: learning-portal-report
+  datasource:
+    url: jdbc:mysql://localhost:3306/reportdb
+    username: root
+    password: Root123$
+  
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+       
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+resilience4j:
+  circuitbreaker:
+    instances:
+      reportCB:
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
